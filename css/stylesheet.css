@@ -1,0 +1,118 @@
+/* Helvetica */
+
+@font-face {
+    font-family: 'helvetica-condensedlightlight';
+    src: url('../fonts/helvetica-condensedlight-webfont.eot');
+    src: url('../fonts/helvetica-condensedlight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helvetica-condensedlight-webfont.woff2') format('woff2'),
+         url('../fonts/helvetica-condensedlight-webfont.woff') format('woff'),
+         url('../fonts/helvetica-condensedlight-webfont.ttf') format('truetype'),
+         url('../fonts/helvetica-condensedlight-webfont.svg#helvetica-condensedlightlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'helvetica_25_ultralightRg';
+    src: url('../fonts/helvetica_25_ultralight-webfont.eot');
+    src: url('../fonts/helvetica_25_ultralight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helvetica_25_ultralight-webfont.woff2') format('woff2'),
+         url('../fonts/helvetica_25_ultralight-webfont.woff') format('woff'),
+         url('../fonts/helvetica_25_ultralight-webfont.ttf') format('truetype'),
+         url('../fonts/helvetica_25_ultralight-webfont.svg#helvetica_25_ultralightRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'helvetica57-condensedroman';
+    src: url('../fonts/helveticacd-webfont.eot');
+    src: url('../fonts/helveticacd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticacd-webfont.woff2') format('woff2'),
+         url('../fonts/helveticacd-webfont.woff') format('woff'),
+         url('../fonts/helveticacd-webfont.ttf') format('truetype'),
+         url('../fonts/helveticacd-webfont.svg#helvetica57-condensedroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'helvetica-condensedbold';
+    src: url('../fonts/helveticacdbd-webfont.eot');
+    src: url('../fonts/helveticacdbd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/helveticacdbd-webfont.woff2') format('woff2'),
+         url('../fonts/helveticacdbd-webfont.woff') format('woff'),
+         url('../fonts/helveticacdbd-webfont.ttf') format('truetype'),
+         url('../fonts/helveticacdbd-webfont.svg#helvetica-condensedbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url('../fonts/proximanova-regular-webfont.eot');
+    src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('../fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'proxima_nova_alt_rgbold';
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.ttf') format('truetype'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_bold-webfont.svg#proxima_nova_alt_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+	
+}
+
+/* Originals */
+
+@font-face {
+	font-family: 'shout-icons';
+	src:url('../../fonts/originals/shout-icons.eot?-fobgvm');
+	src:url('../../fonts/originals/shout-icons.eot?#iefix-fobgvm') format('embedded-opentype'),
+		url('../../fonts/originals/shout-icons.ttf?-fobgvm') format('truetype'),
+		url('../../fonts/originals/shout-icons.woff?-fobgvm') format('woff'),
+		url('../../fonts/originals/shout-icons.svg?-fobgvm#shout-icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'shout-icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	font-size: 33px;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-message:before {
+	content: "\e600";
+}
+.icon-notify:before {
+	content: "\e606";
+}
+.icon-shoutpoint:before {
+	content: "\e607";
+}
