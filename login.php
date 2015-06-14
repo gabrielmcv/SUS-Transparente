@@ -9,6 +9,6 @@
 				<div class="form-group">
 				<input type="submit" name="signin" class="btn btn-primary btnmod" id="register" value="Buscar código">
 				</div>
-			<div id="validation_msg"><?php if($error == 1){ echo '<p class="alert alert-danger jf_error">E-mail ou senha incorretos</p>'; } ?></div>
+			<div id="validation_msg"><?php if($error == 1){ echo '<p class="alert alert-danger jf_error">Código ou senha incorretos</p>'; } ?></div>
 		</div>
     </form>

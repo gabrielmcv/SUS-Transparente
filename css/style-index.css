@@ -22,8 +22,8 @@ margin-top: 40px;
 .ca-container{
 	position:relative;
 	margin: 0 auto;
-	width:92%;
 	height:450px;
+	width:92%;
 }
 
 .ca-wrapper{
@@ -77,13 +77,12 @@ margin-top: 40px;
 }
 
 .ca-presentation{
-	padding: 0 75px 0;
 	font-size: 72px;
 }
 
 .ca-presentation-find{
 	position: relative;
-	top: -40px;
+	top: -10px;
 font-size: 30px;
 color: #174D8D;
 font-family: "helvetica_25_ultralightRg", "Helvetica Neue", Arial;
@@ -91,8 +90,8 @@ margin-top: -20px;
 }
 
 .type-one{
-  -webkit-animation-duration: 1s;
-  -webkit-animation-delay: 2s;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1s;
   -o-animation-duration: 1s;
   -o-animation-delay: 1s;
   -ms-animation-duration: 1s;
@@ -103,7 +102,7 @@ margin-top: -20px;
 
 .type-two{
   -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 3.5s;
+  -webkit-animation-delay: 2s;
   -o-animation-duration: 1s;
   -o-animation-delay: 1s;
   -ms-animation-duration: 1s;
@@ -278,6 +277,7 @@ width: 450px;
 
 #registry-box{
 	margin-left: 50px;
+	margin-top: 100px;
 }
 
 #registry-box .ads{
@@ -436,7 +436,7 @@ color: #FFF;
 #main .container {
   width: 100%;
   margin: 0px;
-  padding: 75px 0px 70px 20px;
+  padding: 20px 0 70px 0px;
   min-height: 0px;
 }
 
@@ -451,7 +451,7 @@ width: 100%;
 
 #registry-box{
 	padding-top: 0px;
-	margin-left: 0px;
+	margin: 0 auto;	
 }
 
 #registry-box .box{
@@ -480,13 +480,13 @@ width: 100%;
 }
 
 .ca-presentation {
-  padding: 0px 25px 0;
   font-size: 44px;
+  float: left;
 }
 
 .ca-presentation-find {
-  top: -15px;
   font-size: 18px;
+  float: right;
 }
 
 #registry-box .box {
@@ -507,11 +507,10 @@ width: 330px;
 
 #main .container{
 margin: 0;
-padding-top: 55px;
+padding-top: 20px;
 }
 
 .ca-presentation-find {
-  top: -40px;
   font-size: 30px;
 }
 
@@ -529,7 +528,6 @@ width: 350px;
 
 .ca-presentation{
 	font-size: 56px;
-	padding: 30px 50px 0;	
 }	
 	
 }
@@ -552,7 +550,6 @@ width: 350px;
 
 .ca-presentation{
 	font-size: 65px;
-	padding: 20px 50px 0;	
 }	
 	
 }
@@ -588,7 +585,6 @@ width: 450px;
 
 .ca-presentation{
 	font-size: 72px;
-	padding-top: 50px;
 }	
 
 .row{
