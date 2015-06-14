@@ -54,7 +54,7 @@ function validaUsuario($usuario, $senha) {
   $nsenha = addslashes($senha);
   
   // Monta uma consulta SQL (query) para procurar um usuário
-  $sql = "SELECT `id`, `nome`, `tipo`  FROM `".$_SG['tabela']."` WHERE ".$cS." `id_sisreg` = '".$nusuario."' AND `user_pass` = '".$nsenha."' LIMIT 1";
+  $sql = "SELECT `id`, `nome`, `tipo`  FROM `".$_SG['tabela']."` WHERE `id_sisreg` = '".$nusuario."' AND `user_pass` = '".$nsenha."' LIMIT 1";
 
   $query = $_SG['link']->query($sql);
   $resultado = mysqli_fetch_assoc($query);
@@ -66,15 +66,15 @@ function validaUsuario($usuario, $senha) {
     return false;
   } else {
     // Definimos dois valores na sessão com os dados do usuário
-    $_SESSION['id'] = $resultado['user_id']; // Pega o valor da coluna 'id do registro encontrado no MySQL
+    $_SESSION['id'] = $resultado['id']; // Pega o valor da coluna 'id do registro encontrado no MySQL
     $_SESSION['user_nick'] = $resultado['nome']; // Pega o valor da coluna 'nome' do registro encontrado no MySQL
 	$_SESSION['logged_in'] = true;	
 
     // Verifica a opção se sempre validar o login
     if ($_SG['validaSempre'] == true) {
       // Definimos dois valores na sessão com os dados do login
-      $_SESSION['usuarioLogin'] = $usuario;
-      $_SESSION['usuarioSenha'] = $senha;
+      $_SESSION['usuarioLogin'] = $nusuario;
+      $_SESSION['usuarioSenha'] = $nsenha;
 	  $_SESSION['logged_in'] = true;
     }
 

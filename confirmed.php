@@ -57,12 +57,14 @@ $error = 0;
 
 <div id="main">  
 <div class="container">
-		<div class="col-md-8 column hidden-sm hidden-xs">		
-			<div id="ca-container" class="ca-container">
+		<div class="col-md-12 column hidden-sm hidden-xs">
 			<div class="ca-presentation">
-			<div class="animated zoomInLeft logo-topo"><img src="img/logo.svg" width="300px" /></div>
+			<div class="animated zoomInLeft"></div>
+			<span class="ca-presentation-find type-one">Não se preocupe, </span><span class="ca-presentation-find type-two animated fadeIn"><strong>nós</strong> mostramos para <strong>você</strong>.</span>		
 			</div>
-			<span class="ca-presentation-find type-one animated fadeIn">Dados transparentes, </span><span class="ca-presentation-find type-two animated fadeIn">de <strong>consultas</strong> e <strong>exames</strong>.</span>					
+		</div>
+		<div class="col-md-8 column hidden-sm hidden-xs">
+			<div id="ca-container" class="ca-container">
 				<div id="features" class="ca-wrapper">
 <ul class="nav navbar-nav">
         <li class="dropdown">
@@ -72,11 +74,12 @@ $error = 0;
             $result_cat = $connection->query($qry_cat);
 
 ?>
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Escolha uma especialidade <span class="fa fa-chevron-down fa-md pull-right"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Teste Teste Teste Teste <span class="fa fa-chevron-down fa-md pull-right"></span></a>
         <ul class="dropdown-menu">
+            <li><a href="?sp=2&cat=0">Vitrine<span class="fa fa-chevron-down fa-md pull-right"></a></li>
+			<li class="divider"></li>
 		  <?php
-					
-						$cat_number = mysqli_num_rows($result_cat);				
+						$cat_number = mysqli_num_rows($result_cat);
 						$i = 0;
 						
 						while ($row_cat = mysqli_fetch_assoc($result_cat)){ 
@@ -140,6 +143,14 @@ $error = 0;
 		</div>
 </div>
 </div>
+
+<!--	<div class="footer">
+           			<div class="input-wrap">
+					<form method="get" action="search/">
+					<input type="text" name="q" class="typeahead tt-query" autocomplete="on" placeholder="O que você está procurando?" spellcheck="true" value="<?php echo $question ?>" required>
+					<input type="submit" class="ShoutButton" value="" /></form>
+					</div>
+	</div> -->
 		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 		<!-- the jScrollPane script -->
 		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>

@@ -1,34 +1,58 @@
 <?php
 
 require_once("config/init.php");
+	include("security.php");
+	protegePagina();
 
-$nome = $_SESSION['user_id'];
-
-mysql_select_db($database_conexao, $conexao);
+$user_id = $_SESSION['id'];
 
 			$qryval = "SELECT * FROM `fila_procedimentos` WHERE (id = '$user_id') LIMIT 1";
-            $exe_usuariosval = mysql_query($qryval) or die(mysql_error());
-            $rowval = mysql_fetch_array($exe_usuariosval, MYSQL_ASSOC);
+            $exe_usuariosval = $connection->query($qryval);
+            $rowval = mysqli_fetch_array($exe_usuariosval, MYSQL_ASSOC);
 
 $tipo = $rowval['tipo'];
 $nome = $rowval['nome'];
-$data_entrada = $rowval['dt_entrada'];
+$data = $rowval['dt_entrada'];
+
+if($data == "0000-00-00 00:00:00"){
+	$marcado = 0;
+} else {
+	$marcado = 1;
+}
 
 			if($tipo == 0){
 				$idtipo = $rowval['id_especialidade'];
 				$qrynew = "SELECT * FROM `especialidades` WHERE (id = '$idtipo') LIMIT 1";
-					$qrycount = "SELECT count(*) as total FROM `fila_procedimentos` WHERE id_especialidade = 1 and dt_entrada < '$data_entrada'";
-					$data=mysql_fetch_assoc($result);
-					$data = $data['total']+1;
+					if($marcado == 0){
+						$qrycount = "SELECT count(*) as total FROM `fila_procedimentos` WHERE id_especialidade = 1 and dt_entrada < '$data'";
+						$qry_table = "SELECT * FROM fila_procedimentos WHERE id_especialidade = 1 ORDER BY dt_entrada DESC LIMIT 10";
+						$result = $connection->query($qrycount);
+						$pos_fila = mysqli_fetch_assoc($result);
+						$pos_fila = $pos_fila['total']+1;						
+						}
+					$nometipo = "consulta";
 			} else if($tipo == 1){
 				$idtipo = $rowval['id_exame'];			
 				$qrynew = "SELECT * FROM `exames` WHERE (id = '$idtipo') LIMIT 1";
-					$qrycount = "SELECT count(*) as total FROM `fila_procedimentos` WHERE id_exame = 1 and dt_entrada < '$data_entrada'";
-					$data=mysql_fetch_assoc($result)+1;
-					$data = $data['total']+1;
+					if($marcado == 0){
+						$qrycount = "SELECT count(*) as total FROM `fila_procedimentos` WHERE id_exame = 1 and dt_entrada < '$data'";
+						$qry_table = "SELECT * FROM fila_procedimentos WHERE id_exame = 1 ORDER BY dt_entrada DESC LIMIT 10";						
+						$result = $connection->query($qrycount);
+						$pos_fila = mysqli_fetch_assoc($result);
+						$pos_fila = $pos_fila['total']+1;
+						}
+					$nometipo = "exame";					
 			}
-				$exe_new = mysql_query($qrynew) or die(mysql_error());
-				$rowfin = mysql_fetch_array($exe_new, MYSQL_ASSOC);
+				$exe_new = $connection->query($qrynew);
+				$rowfin = mysqli_fetch_array($exe_new, MYSQL_ASSOC);
+			
+			if($marcado == 0){
+				$message = "Seu procedimento ainda não foi marcado, mas você é o <strong>".$pos_fila."º</strong> da fila.";
+			} else {
+				$data_atendimento = date_create($rowval['dt_atendimento']);
+				$data_atendimento = date_format($data_atendimento,'d/m/Y \à\s H:i:s');
+				$message = "Seu procedimento está marcado para o dia: ".$data_atendimento;			
+			}
 
 ?>
 <!DOCTYPE html>
@@ -54,7 +78,7 @@ $data_entrada = $rowval['dt_entrada'];
 	<link rel="stylesheet" type="text/css" href="css/animate.css" />
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="css/style-index.css" />
+		<link rel="stylesheet" type="text/css" href="css/style-info.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css" media="all" />	
 		<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
 	
@@ -71,33 +95,46 @@ $data_entrada = $rowval['dt_entrada'];
 <div class="container">
 		<div class="col-md-12 column text-center">
 			<div class="ca-presentation">
-			<div class="animated zoomInLeft"></div>
-			<span class="ca-presentation-find type-one">Você é o <?php echo $data; ?>º na fila.</span>		
-			</div>
-			</div>
-		</div>
-		<div class="col-md-8 column hidden-sm hidden-xs">
-			<div id="ca-container" class="ca-container">
-				<div id="features" class="ca-wrapper">
-			
-				</div>
+			<div class="animated fadeIn"><img src="img/logo.svg" width="300px" /></div>
+			<div class="ca-presentation-find type-one">Olá <strong><?php echo $nome; ?></strong>,<br /></span>			
+			<span class="ca-presentation-find type-one"><?php echo $message; ?></span>
 			</div>
 		</div>
-		<div class="col-md-4 column reghandle">
-			<div id="registry-box">
-			<div class="box"><div class="logo"></div>Digite o código de seu procedimento e sua senha<?php include_once("login.php"); ?></div>
+<?php 	if($marcado == 0){ 
+            $result_cat = $connection->query($qry_table);
+?>
+		<div class="col-md-12 column">
+			<div class="animated fadeIn">			
+				<table class="table table-bordered">
+				  <tr>
+					<th width="10%">Posição</th>
+					<th width="45%">Paciente</th>
+					<th width="45%%">Data de entrada</th>
+				  </tr>
+<?php
+				$i = 1;
+				
+				while ($row_table = mysqli_fetch_assoc($result_cat)){
+				
+				$nome_pac = strtoupper(substr($row_table["id_sisreg"],3));
+				$data_entrada = date_create($row_table['dt_entrada']);
+				$data_entrada = date_format($data_entrada,'d/m/Y \à\s H:i:s');
+				
+				echo "<tr><td>".$i."</td>";				
+				echo "<td>XXX".$nome_pac."</td>";
+				echo "<td>".$data_entrada."</td>";
+				
+				$i++;
+				}
+?>
+				  </tr>
+				</table>						
 			</div>
 		</div>
+<?php } ?>
+<div id="fechar" class="text-center"><input type="button" name="close" class="btn btn-primary btnmod" id="fechar" value="Fechar" onclick="window.close()"></div>
 </div>
 </div>
-
-<!--	<div class="footer">
-           			<div class="input-wrap">
-					<form method="get" action="search/">
-					<input type="text" name="q" class="typeahead tt-query" autocomplete="on" placeholder="O que você está procurando?" spellcheck="true" value="<?php echo $question ?>" required>
-					<input type="submit" class="ShoutButton" value="" /></form>
-					</div>
-	</div> -->
 		<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 		<!-- the jScrollPane script -->
 		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>

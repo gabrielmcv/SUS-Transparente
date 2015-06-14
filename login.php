@@ -1,4 +1,4 @@
-<form id="shLog" action="valid.php" method="post">
+<form id="shLog" action="valid.php" method="post" target="_blank">
 		<div id="slider" class="form">
 		<div id="form-box">
 					<input type="text" id="cod" name="shcod" maxlength="255" class="form-control" data-msg="Digite um código válido." placeholder="ex: EX8AF" required> 

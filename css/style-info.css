@@ -10,6 +10,10 @@ div{
 margin-top: 10px;
 }
 
+th{
+text-align: center;
+}
+
 .logo {
   width: 100%;
   height: 140px;
@@ -20,7 +24,8 @@ margin-top: 10px;
 }
 
 #main .container {
-width: 100%;
+	margin: 0 auto;
+	width: 700px;
 }
 
 #GraficoBarra{
